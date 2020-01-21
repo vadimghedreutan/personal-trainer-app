@@ -1,0 +1,33 @@
+:root {
+  --primary-font: 'Calistoga', cursive;
+  --secondary-color: #e04a6d;
+}
+
+$primary-color: #17a2b8;
+$sec-color: #0d0d10;
+$dark-color: #343a40;
+$light-color: #f4f4f4;
+$danger-color: #dc3545;
+$success-color: #28a745;
+$small-color: #26a69a;
+
+@mixin media($size: 37.5em) {
+  @media (max-width: $size) { 
+    @content; 
+  }
+}
+
+@function set-text-color($color) {
+  @if (lightness($color) > 60) {
+    @return #333;
+  } @else {
+    @return #fff;
+  }
+}
+
+// Mixins
+@mixin set-background($color) {
+  background-color: $color;
+  color: set-text-color($color);
+}
+
